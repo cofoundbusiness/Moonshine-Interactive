@@ -44,7 +44,6 @@ body {
 /* Scanline Overlay - Zoom Resilient */
 .scanlines {
   position: relative;
-  pointer-events: none;
 }
 .scanlines::before {
   content: '';

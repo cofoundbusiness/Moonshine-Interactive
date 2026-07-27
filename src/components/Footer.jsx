@@ -27,9 +27,9 @@ export default function Footer({ setCurrentView }) {
         </div>
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 xl:pt-14 border-t border-white/10 gap-8">
           <div className="flex gap-8 xl:gap-14">
-            <a className="text-steel hover:text-signal transition-colors font-label-sm text-label-sm xl:text-lg uppercase" href="#linkedin">LinkedIn</a>
-            <a className="text-steel hover:text-signal transition-colors font-label-sm text-label-sm xl:text-lg uppercase" href="#instagram">Instagram</a>
-            <a className="text-steel hover:text-signal transition-colors font-label-sm text-label-sm xl:text-lg uppercase" href="#discord">Discord</a>
+            <a className="text-steel hover:text-signal transition-colors font-label-sm text-label-sm xl:text-lg uppercase" href="https://www.linkedin.com/company/moonshine-interactive" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a className="text-steel hover:text-signal transition-colors font-label-sm text-label-sm xl:text-lg uppercase" href="https://www.instagram.com/southsidegames" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a className="text-steel hover:text-signal transition-colors font-label-sm text-label-sm xl:text-lg uppercase" href="https://www.youtube.com/@southsidegame" target="_blank" rel="noopener noreferrer">YouTube</a>
           </div>
           <p className="text-steel font-label-sm text-label-sm xl:text-base uppercase opacity-80">
             © 2026 MoonShine Interactive. All Rights Reserved.
