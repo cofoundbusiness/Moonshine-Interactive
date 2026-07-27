@@ -82,7 +82,7 @@ export default function GamesView({ openTrailer, openLightbox, setCurrentView })
   return (
     <div className="pt-0">
       {/* Hero Section */}
-      <section className="relative w-full h-screen min-h-[650px] xl:min-h-[850px] 2xl:min-h-[980px] flex items-center justify-center overflow-hidden">
+      <section className="relative w-full min-h-screen py-24 xl:py-32 flex items-center justify-center overflow-hidden">
         <HeroCanvas />
         <div className="absolute inset-0 z-0">
           <img 

@@ -14,13 +14,26 @@ export default function Character3DModelViewer({ imageSrc, characterName, cleara
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
 
-    let width = (canvas.width = canvas.parentElement.clientWidth || 500);
-    let height = (canvas.height = canvas.parentElement.clientHeight || 400);
+    const updateSize = () => {
+      const parent = canvas.parentElement;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const w = parent ? parent.clientWidth : 500;
+      const h = parent ? parent.clientHeight : 400;
+      canvas.width = Math.floor(w * dpr);
+      canvas.height = Math.floor(h * dpr);
+      canvas.style.width = `${w}px`;
+      canvas.style.height = `${h}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      return { width: w, height: h };
+    };
+
+    let { width, height } = updateSize();
 
     const handleResize = () => {
       if (!canvas || !canvas.parentElement) return;
-      width = canvas.width = canvas.parentElement.clientWidth;
-      height = canvas.height = canvas.parentElement.clientHeight;
+      const size = updateSize();
+      width = size.width;
+      height = size.height;
     };
     window.addEventListener('resize', handleResize);
 

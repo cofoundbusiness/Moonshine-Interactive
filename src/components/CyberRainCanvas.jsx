@@ -15,13 +15,25 @@ export default function CyberRainCanvas({ currentView = 'games' }) {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
 
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
+    const updateSize = () => {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      canvas.width = Math.floor(w * dpr);
+      canvas.height = Math.floor(h * dpr);
+      canvas.style.width = `${w}px`;
+      canvas.style.height = `${h}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      return { width: w, height: h };
+    };
+
+    let { width, height } = updateSize();
 
     const handleResize = () => {
       if (!canvas) return;
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
+      const size = updateSize();
+      width = size.width;
+      height = size.height;
     };
     window.addEventListener('resize', handleResize);
 

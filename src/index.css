@@ -41,18 +41,23 @@ body {
   background: var(--signal-red);
 }
 
-/* Scanline & CRT Subtle Overlay */
+/* Scanline Overlay - Zoom Resilient */
 .scanlines {
+  position: relative;
+  pointer-events: none;
+}
+.scanlines::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99;
   background: linear-gradient(
     rgba(18, 16, 16, 0) 50%, 
-    rgba(0, 0, 0, 0.25) 50%
-  ), linear-gradient(
-    90deg,
-    rgba(255, 0, 0, 0.02),
-    rgba(0, 255, 0, 0.01),
-    rgba(0, 0, 255, 0.02)
+    rgba(0, 0, 0, 0.15) 50%
   );
-  background-size: 100% 3px, 6px 100%;
+  background-size: 100% 4px;
+  opacity: 0.6;
 }
 
 /* Glassmorphism & Cyber Borders */
