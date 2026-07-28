@@ -23,7 +23,7 @@ const contractors = [
   { initials: 'AB', name: 'ADRIBADRI', role: 'Concept Artist', dept: 'contractor', desc: 'Early world and character concept visualization.' }
 ];
 
-export default function TeamView() {
+export default function TeamView({ setCurrentView }) {
   const [activeTab, setActiveTab] = useState('all');
 
   return (
@@ -134,7 +134,8 @@ export default function TeamView() {
             See the world we're building.
           </h3>
           <button 
-            onClick={() => { window.location.hash = 'screenshots'; }}
+            onClick={() => { cyberAudio.playClick(); setCurrentView('screenshots'); window.location.hash = 'screenshots'; window.scrollTo(0, 0); }}
+            onMouseEnter={() => cyberAudio.playHover()}
             className="btn-signal font-label-md text-label-md xl:text-2xl uppercase py-5 px-12 xl:py-8 xl:px-16 shadow-2xl hover:scale-105 transition-transform"
           >
             View Trailer & Screenshots →
