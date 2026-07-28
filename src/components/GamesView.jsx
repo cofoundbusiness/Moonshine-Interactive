@@ -307,9 +307,9 @@ export default function GamesView({ openTrailer, openLightbox, setCurrentView })
                 key={idx}
                 onClick={() => { cyberAudio.playClick(); openLightbox(img.src, img.cap, arr, idx); }}
                 onMouseEnter={() => cyberAudio.playHover()}
-                className="aspect-square bg-surface overflow-hidden border border-white/10 cyber-card cursor-pointer group shadow-xl"
+                className="aspect-video bg-black overflow-hidden border border-white/10 cyber-card cursor-pointer group shadow-xl"
               >
-                <img alt={`Visual ${idx+1}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src={img.src} />
+                <img alt={`Visual ${idx+1}`} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700" src={img.src} />
               </div>
             ))}
           </div>

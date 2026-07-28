@@ -112,10 +112,10 @@ export default function ScreenshotsView({ openTrailer, openLightbox }) {
                   key={idx}
                   onClick={() => { cyberAudio.playClick(); if (openLightbox) openLightbox(s.src, s.caption, arr, idx); }}
                   onMouseEnter={() => cyberAudio.playHover()}
-                  className="min-w-[85vw] md:min-w-[45vw] lg:min-w-[35vw] xl:min-w-[500px] h-fit snap-center cyber-card border border-white/10 bg-surface overflow-hidden cursor-pointer group/card shadow-2xl flex flex-col shrink-0"
+                  className="w-[90vw] md:w-[80vw] lg:w-[75vw] xl:w-[70vw] max-w-7xl h-fit snap-center cyber-card border border-white/10 bg-surface overflow-hidden cursor-pointer group/card shadow-2xl flex flex-col shrink-0"
                 >
-                  <div className="aspect-video overflow-hidden relative shrink-0">
-                    <img alt={s.title} className="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-700" src={s.src} />
+                  <div className="aspect-video overflow-hidden relative shrink-0 bg-black">
+                    <img alt={s.title} className="w-full h-full object-contain group-hover/card:scale-110 transition-transform duration-700" src={s.src} />
                     <div className="absolute inset-0 bg-black/20 group-hover/card:bg-transparent transition-all"></div>
                   </div>
                   <div className="p-5 xl:p-8 flex-grow">
@@ -144,8 +144,8 @@ export default function ScreenshotsView({ openTrailer, openLightbox }) {
               onMouseEnter={() => cyberAudio.playHover()}
               className="cyber-card border border-white/10 overflow-hidden cursor-pointer group shadow-2xl"
             >
-              <div className="aspect-video overflow-hidden">
-                <img alt="Concept Art 1" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src={projectEsperanceScreensImg} />
+              <div className="aspect-video overflow-hidden bg-black">
+                <img alt="Concept Art 1" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700" src={projectEsperanceScreensImg} />
               </div>
               <div className="p-6 xl:p-10 bg-surface">
                 <div className="font-label-md text-lg xl:text-2xl text-pure">Surveillance Architecture Study</div>
@@ -158,8 +158,8 @@ export default function ScreenshotsView({ openTrailer, openLightbox }) {
               onMouseEnter={() => cyberAudio.playHover()}
               className="cyber-card border border-white/10 overflow-hidden cursor-pointer group shadow-2xl"
             >
-              <div className="aspect-video overflow-hidden">
-                <img alt="Concept Art 2" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src={shatteredGlassImg} />
+              <div className="aspect-video overflow-hidden bg-black">
+                <img alt="Concept Art 2" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700" src={shatteredGlassImg} />
               </div>
               <div className="p-6 xl:p-10 bg-surface">
                 <div className="font-label-md text-lg xl:text-2xl text-pure">Reflective Fracture & Neon Study</div>
