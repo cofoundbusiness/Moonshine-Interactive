@@ -111,7 +111,7 @@ export default function GamesView({ openTrailer, openLightbox, setCurrentView })
             <button 
               onClick={() => {
                 cyberAudio.playClick();
-                document.getElementById('section-lore')?.scrollIntoView({ behavior: 'smooth' });
+                document.getElementById('section-welcome')?.scrollIntoView({ behavior: 'smooth' });
               }} 
               onMouseEnter={() => cyberAudio.playHover()}
               className="border border-white/30 bg-surface/80 hover:bg-white hover:text-black font-label-md text-label-md xl:text-xl uppercase py-4 px-8 xl:py-6 xl:px-12 transition-all"
@@ -138,7 +138,7 @@ export default function GamesView({ openTrailer, openLightbox, setCurrentView })
       </section>
 
       {/* Section 3: World Introduction */}
-      <section className="bg-transparent py-28 xl:py-40 px-margin-mobile border-y border-white/10">
+      <section id="section-welcome" className="bg-transparent py-28 xl:py-40 px-margin-mobile border-y border-white/10">
         <div className="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24 items-center relative z-10">
           <div className="space-y-8 xl:space-y-12">
             <div>
