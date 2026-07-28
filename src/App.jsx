@@ -34,9 +34,9 @@ export default function App() {
   const renderView = () => {
     switch (currentView) {
       case 'studio':
-        return <StudioView />;
+        return <StudioView setCurrentView={setCurrentView} />;
       case 'team':
-        return <TeamView />;
+        return <TeamView setCurrentView={setCurrentView} />;
       case 'screenshots':
       case 'news':
         return (

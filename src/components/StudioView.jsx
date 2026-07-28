@@ -1,7 +1,7 @@
 import React from 'react';
 import moonshineLogoImg from '../assets/moonshine-logo.jpg';
 
-export default function StudioView() {
+export default function StudioView({ setCurrentView }) {
   return (
     <div className="pt-28 xl:pt-40 px-margin-mobile pb-32 xl:pb-48">
       <div className="max-w-container-max mx-auto">
@@ -89,7 +89,8 @@ export default function StudioView() {
             Want to know who's building ESPERANCE?
           </h3>
           <button 
-            onClick={() => { window.location.hash = 'team'; }}
+            onClick={() => { cyberAudio.playClick(); setCurrentView('team'); window.location.hash = 'team'; window.scrollTo(0, 0); }}
+            onMouseEnter={() => cyberAudio.playHover()}
             className="btn-signal font-label-md text-label-md xl:text-2xl uppercase py-5 px-12 xl:py-8 xl:px-16 shadow-2xl hover:scale-105 transition-transform"
           >
             Meet the Team →
