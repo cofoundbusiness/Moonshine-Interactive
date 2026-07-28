@@ -43,15 +43,15 @@ export default function Navbar({ currentView, setCurrentView, audioEnabled, setA
     <>
       {/* Floating Top-Left HUD Studio Branding - Slides up smoothly when drawer opens */}
       <div 
-        className={`fixed top-6 left-6 xl:top-8 xl:left-10 z-40 flex items-center gap-3 xl:gap-5 px-4 py-2.5 xl:px-6 xl:py-3.5 bg-void/90 backdrop-blur-md border border-white/20 hover:border-signal transition-all duration-500 shadow-2xl cursor-pointer group transform ${
+        className={`fixed top-4 left-4 sm:top-6 sm:left-6 xl:top-8 xl:left-10 z-40 flex items-center gap-2 sm:gap-3 xl:gap-5 px-3 py-2 sm:px-4 sm:py-2.5 xl:px-6 xl:py-3.5 bg-void/90 backdrop-blur-md border border-white/20 hover:border-signal transition-all duration-500 shadow-2xl cursor-pointer group transform ${
           menuOpen ? '-translate-y-24 opacity-0 pointer-events-none' : 'translate-y-0 opacity-100 pointer-events-auto'
         }`}
         onClick={() => handleNav('games')}
         onMouseEnter={() => cyberAudio.playHover()}
       >
-        <div className="w-3 h-3 xl:w-4 xl:h-4 bg-signal group-hover:scale-125 transition-transform animate-pulse"></div>
-        <div className="text-headline-md font-headline-md text-pure tracking-widest uppercase text-xl md:text-2xl xl:text-4xl">
-          MOONSHINE <span className="text-signal text-base xl:text-2xl">// ESPERANCE</span>
+        <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 xl:w-4 xl:h-4 bg-signal group-hover:scale-125 transition-transform animate-pulse"></div>
+        <div className="text-headline-md font-headline-md text-pure tracking-widest uppercase text-lg sm:text-xl md:text-2xl xl:text-4xl whitespace-nowrap">
+          MOONSHINE <span className="hidden sm:inline text-signal text-sm sm:text-base xl:text-2xl">// ESPERANCE</span>
         </div>
       </div>
 
@@ -60,18 +60,18 @@ export default function Navbar({ currentView, setCurrentView, audioEnabled, setA
         onClick={() => { cyberAudio.playClick(); setMenuOpen(true); }}
         onMouseEnter={() => cyberAudio.playHover()}
         aria-label="Open navigation drawer"
-        className={`fixed top-6 right-6 xl:top-8 xl:right-10 z-40 flex items-center gap-3 xl:gap-4 px-5 py-2.5 xl:px-8 xl:py-4 bg-void/90 backdrop-blur-md border border-white/20 hover:border-signal hover:bg-signal/10 transition-all duration-500 group shadow-2xl cursor-pointer transform ${
+        className={`fixed top-4 right-4 sm:top-6 sm:right-6 xl:top-8 xl:right-10 z-40 flex items-center gap-2 sm:gap-3 xl:gap-4 px-3 sm:px-5 py-2 sm:py-2.5 xl:px-8 xl:py-4 bg-void/90 backdrop-blur-md border border-white/20 hover:border-signal hover:bg-signal/10 transition-all duration-500 group shadow-2xl cursor-pointer transform ${
           menuOpen ? '-translate-y-24 opacity-0 pointer-events-none' : 'translate-y-0 opacity-100 pointer-events-auto'
         }`}
       >
         {/* Animated 3-Line Hamburger Icon */}
-        <div className="relative w-5 h-5 xl:w-7 xl:h-7 flex flex-col justify-center items-center transition-transform duration-500 ease-in-out">
-          <span className="absolute w-5 h-0.5 xl:w-7 xl:h-1 -translate-y-1.5 xl:-translate-y-2 bg-white group-hover:bg-signal transition-all duration-300"></span>
-          <span className="absolute w-5 h-0.5 xl:w-7 xl:h-1 bg-white group-hover:bg-signal transition-all duration-300"></span>
-          <span className="absolute w-5 h-0.5 xl:w-7 xl:h-1 translate-y-1.5 xl:translate-y-2 bg-white group-hover:bg-signal transition-all duration-300"></span>
+        <div className="relative w-4 h-4 sm:w-5 sm:h-5 xl:w-7 xl:h-7 flex flex-col justify-center items-center transition-transform duration-500 ease-in-out">
+          <span className="absolute w-4 sm:w-5 h-0.5 xl:w-7 xl:h-1 -translate-y-1.5 xl:-translate-y-2 bg-white group-hover:bg-signal transition-all duration-300"></span>
+          <span className="absolute w-4 sm:w-5 h-0.5 xl:w-7 xl:h-1 bg-white group-hover:bg-signal transition-all duration-300"></span>
+          <span className="absolute w-4 sm:w-5 h-0.5 xl:w-7 xl:h-1 translate-y-1.5 xl:translate-y-2 bg-white group-hover:bg-signal transition-all duration-300"></span>
         </div>
 
-        <span className="font-label-md text-sm xl:text-lg uppercase tracking-wider text-pure group-hover:text-signal">
+        <span className="font-label-md text-xs sm:text-sm xl:text-lg uppercase tracking-wider text-pure group-hover:text-signal">
           MENU
         </span>
       </button>
