@@ -104,15 +104,15 @@ export default function ScreenshotsView({ openTrailer, openLightbox }) {
             {/* Horizontally Scrolling Container */}
             <div 
               ref={scrollRef}
-              className="flex overflow-x-auto gap-6 xl:gap-10 pb-8 snap-x snap-mandatory hide-scrollbar"
+              className="flex overflow-x-auto items-start gap-6 xl:gap-10 pb-8 snap-x snap-mandatory hide-scrollbar"
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
-              {screenshots.map((s, idx) => (
+              {screenshots.map((s, idx, arr) => (
                 <div 
                   key={idx}
-                  onClick={() => { cyberAudio.playClick(); if (openLightbox) openLightbox(s.src, s.caption); }}
+                  onClick={() => { cyberAudio.playClick(); if (openLightbox) openLightbox(s.src, s.caption, arr, idx); }}
                   onMouseEnter={() => cyberAudio.playHover()}
-                  className="min-w-[85vw] md:min-w-[45vw] lg:min-w-[35vw] xl:min-w-[500px] snap-center cyber-card border border-white/10 bg-surface overflow-hidden cursor-pointer group/card shadow-2xl flex flex-col shrink-0"
+                  className="min-w-[85vw] md:min-w-[45vw] lg:min-w-[35vw] xl:min-w-[500px] h-fit snap-center cyber-card border border-white/10 bg-surface overflow-hidden cursor-pointer group/card shadow-2xl flex flex-col shrink-0"
                 >
                   <div className="aspect-video overflow-hidden relative shrink-0">
                     <img alt={s.title} className="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-700" src={s.src} />

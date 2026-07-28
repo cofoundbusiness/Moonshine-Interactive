@@ -17,7 +17,7 @@ export default function App() {
   
   // Modals
   const [trailerOpen, setTrailerOpen] = useState(false);
-  const [lightbox, setLightbox] = useState({ isOpen: false, src: '', caption: '' });
+  const [lightbox, setLightbox] = useState({ isOpen: false, src: '', caption: '', gallery: null, index: 0 });
 
   useEffect(() => {
     const hash = window.location.hash.replace('#', '');
@@ -27,8 +27,24 @@ export default function App() {
     }
   }, []);
 
-  const openLightbox = (src, caption) => {
-    setLightbox({ isOpen: true, src, caption });
+  const openLightbox = (src, caption, gallery = null, index = 0) => {
+    setLightbox({ isOpen: true, src, caption, gallery, index });
+  };
+
+  const handleLightboxNext = () => {
+    if (lightbox.gallery && lightbox.index < lightbox.gallery.length - 1) {
+      const nextIndex = lightbox.index + 1;
+      const nextItem = lightbox.gallery[nextIndex];
+      setLightbox({ ...lightbox, src: nextItem.src, caption: nextItem.caption || nextItem.cap, index: nextIndex });
+    }
+  };
+
+  const handleLightboxPrev = () => {
+    if (lightbox.gallery && lightbox.index > 0) {
+      const prevIndex = lightbox.index - 1;
+      const prevItem = lightbox.gallery[prevIndex];
+      setLightbox({ ...lightbox, src: prevItem.src, caption: prevItem.caption || prevItem.cap, index: prevIndex });
+    }
   };
 
   const renderView = () => {
@@ -85,6 +101,10 @@ export default function App() {
         src={lightbox.src} 
         caption={lightbox.caption} 
         onClose={() => setLightbox({ ...lightbox, isOpen: false })} 
+        onNext={handleLightboxNext}
+        onPrev={handleLightboxPrev}
+        hasNext={lightbox.gallery && lightbox.index < lightbox.gallery.length - 1}
+        hasPrev={lightbox.gallery && lightbox.index > 0}
       />
     </div>
   );

@@ -302,10 +302,10 @@ export default function GamesView({ openTrailer, openLightbox, setCurrentView })
                 src: esperanceUsbImg,
                 cap: "Subject Kaelen: Encrypted '3SPERANCE' Hardware Security Key"
               }
-            ].map((img, idx) => (
+            ].map((img, idx, arr) => (
               <div 
                 key={idx}
-                onClick={() => { cyberAudio.playClick(); openLightbox(img.src, img.cap); }}
+                onClick={() => { cyberAudio.playClick(); openLightbox(img.src, img.cap, arr, idx); }}
                 onMouseEnter={() => cyberAudio.playHover()}
                 className="aspect-square bg-surface overflow-hidden border border-white/10 cyber-card cursor-pointer group shadow-xl"
               >
