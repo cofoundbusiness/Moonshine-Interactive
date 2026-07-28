@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { cyberAudio } from '../utils/audioEngine';
 import sceneInterrogationImg from '../assets/scene-interrogation.jpg';
 import projectEsperanceScreensImg from '../assets/project-esperance-screens.jpg';
@@ -7,6 +7,7 @@ import shatteredGlassImg from '../assets/shattered-glass-esperance.png';
 import standoffRationImg from '../assets/standoff-ration-center.png';
 
 export default function ScreenshotsView({ openTrailer, openLightbox }) {
+  const scrollRef = useRef(null);
   const screenshots = [
     { src: shatteredGlassImg, title: 'Shattered Glass Key Card Capture', caption: 'Subject Kaelen through shattered security glass holding encrypted 3SPERANCE key.' },
     { src: standoffRationImg, title: 'District 01 Ration Center Standoff', caption: 'UE5 Real-time standoff encounter at District 01 Ration Center Checkpoint.' },
@@ -75,24 +76,55 @@ export default function ScreenshotsView({ openTrailer, openLightbox }) {
             <p className="font-label-sm text-xs xl:text-lg text-steel mt-2">Click any screenshot below for full-screen lightbox inspection.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-14">
-            {screenshots.map((s, idx) => (
-              <div 
-                key={idx}
-                onClick={() => { cyberAudio.playClick(); if (openLightbox) openLightbox(s.src, s.caption); }}
-                onMouseEnter={() => cyberAudio.playHover()}
-                className="cyber-card border border-white/10 bg-surface overflow-hidden cursor-pointer group shadow-2xl flex flex-col justify-between"
-              >
-                <div className="aspect-video overflow-hidden relative">
-                  <img alt={s.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src={s.src} />
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all"></div>
+          <div className="relative group">
+            {/* Left Navigation Arrow */}
+            <button 
+              onClick={() => {
+                cyberAudio.playClick();
+                scrollRef.current.scrollBy({ left: -500, behavior: 'smooth' });
+              }}
+              onMouseEnter={() => cyberAudio.playHover()}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-8 z-10 w-12 h-12 xl:w-16 xl:h-16 bg-black/80 border border-white/20 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 hover:bg-signal transition-all cursor-pointer shadow-2xl hidden md:flex hover:scale-110"
+            >
+              <span className="material-symbols-outlined text-3xl xl:text-4xl">chevron_left</span>
+            </button>
+            
+            {/* Right Navigation Arrow */}
+            <button 
+              onClick={() => {
+                cyberAudio.playClick();
+                scrollRef.current.scrollBy({ left: 500, behavior: 'smooth' });
+              }}
+              onMouseEnter={() => cyberAudio.playHover()}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-8 z-10 w-12 h-12 xl:w-16 xl:h-16 bg-black/80 border border-white/20 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 hover:bg-signal transition-all cursor-pointer shadow-2xl hidden md:flex hover:scale-110"
+            >
+              <span className="material-symbols-outlined text-3xl xl:text-4xl">chevron_right</span>
+            </button>
+
+            {/* Horizontally Scrolling Container */}
+            <div 
+              ref={scrollRef}
+              className="flex overflow-x-auto gap-6 xl:gap-10 pb-8 snap-x snap-mandatory hide-scrollbar"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {screenshots.map((s, idx) => (
+                <div 
+                  key={idx}
+                  onClick={() => { cyberAudio.playClick(); if (openLightbox) openLightbox(s.src, s.caption); }}
+                  onMouseEnter={() => cyberAudio.playHover()}
+                  className="min-w-[85vw] md:min-w-[45vw] lg:min-w-[35vw] xl:min-w-[500px] snap-center cyber-card border border-white/10 bg-surface overflow-hidden cursor-pointer group/card shadow-2xl flex flex-col shrink-0"
+                >
+                  <div className="aspect-video overflow-hidden relative shrink-0">
+                    <img alt={s.title} className="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-700" src={s.src} />
+                    <div className="absolute inset-0 bg-black/20 group-hover/card:bg-transparent transition-all"></div>
+                  </div>
+                  <div className="p-5 xl:p-8 flex-grow">
+                    <div className="font-label-sm text-xs xl:text-sm text-signal uppercase mb-1">// SCREENSHOT 0{idx+1}</div>
+                    <div className="font-headline-md text-xl xl:text-3xl text-pure">{s.title}</div>
+                  </div>
                 </div>
-                <div className="p-6 xl:p-10">
-                  <div className="font-label-sm text-xs xl:text-base text-signal uppercase mb-1">// SCREENSHOT 0{idx+1}</div>
-                  <div className="font-headline-md text-xl xl:text-3xl text-pure">{s.title}</div>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 
