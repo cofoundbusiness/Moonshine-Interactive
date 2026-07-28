@@ -260,7 +260,7 @@ export default function GamesView({ openTrailer, openLightbox, setCurrentView })
               <span>Q4 2027</span>
             </div>
             <button 
-              onClick={() => { cyberAudio.playClick(); setCurrentView('studio'); window.location.hash = 'studio'; }}
+              onClick={() => { cyberAudio.playClick(); setCurrentView('studio'); window.location.hash = 'studio'; window.scrollTo(0, 0); }}
               onMouseEnter={() => cyberAudio.playHover()}
               className="text-label-md xl:text-4xl 2xl:text-5xl text-signal uppercase tracking-widest hover:underline decoration-2 underline-offset-8 font-headline-md"
             >
@@ -315,7 +315,7 @@ export default function GamesView({ openTrailer, openLightbox, setCurrentView })
           </div>
           <div className="text-center mt-12 xl:mt-16">
             <button 
-              onClick={() => { cyberAudio.playClick(); setCurrentView('screenshots'); window.location.hash = 'screenshots'; }}
+              onClick={() => { cyberAudio.playClick(); setCurrentView('screenshots'); window.location.hash = 'screenshots'; window.scrollTo(0, 0); }}
               onMouseEnter={() => cyberAudio.playHover()}
               className="btn-signal font-label-md text-label-md xl:text-2xl uppercase py-4 px-10 xl:py-6 xl:px-14 shadow-2xl hover:scale-105 transition-transform"
             >
