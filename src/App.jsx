@@ -6,7 +6,6 @@ import TeamView from './components/TeamView';
 import ScreenshotsView from './components/ScreenshotsView';
 import NewsView from './components/NewsView';
 import ContactView from './components/ContactView';
-import DevView from './components/DevView';
 import CyberRainCanvas from './components/CyberRainCanvas';
 import TrailerModal from './components/TrailerModal';
 import LightboxModal from './components/LightboxModal';
@@ -15,7 +14,6 @@ import Footer from './components/Footer';
 export default function App() {
   const [currentView, setCurrentView] = useState('games');
   const [audioEnabled, setAudioEnabled] = useState(false);
-  const [devEnabled, setDevEnabled] = useState(false);
   
   // Modals
   const [trailerOpen, setTrailerOpen] = useState(false);
@@ -23,10 +21,9 @@ export default function App() {
 
   useEffect(() => {
     const hash = window.location.hash.replace('#', '');
-    const validViews = ['games', 'studio', 'team', 'screenshots', 'news', 'contact', 'dev'];
+    const validViews = ['games', 'studio', 'team', 'screenshots', 'news', 'contact'];
     if (validViews.includes(hash)) {
       setCurrentView(hash);
-      if (hash === 'dev') setDevEnabled(true);
     }
   }, []);
 
@@ -36,8 +33,6 @@ export default function App() {
 
   const renderView = () => {
     switch (currentView) {
-      case 'dev':
-        return devEnabled ? <DevView /> : <GamesView openTrailer={() => setTrailerOpen(true)} openLightbox={openLightbox} setCurrentView={setCurrentView} />;
       case 'studio':
         return <StudioView />;
       case 'team':
@@ -72,8 +67,6 @@ export default function App() {
         setCurrentView={setCurrentView} 
         audioEnabled={audioEnabled} 
         setAudioEnabled={setAudioEnabled} 
-        devEnabled={devEnabled}
-        setDevEnabled={setDevEnabled}
       />
 
       <main className="flex-grow relative z-10">

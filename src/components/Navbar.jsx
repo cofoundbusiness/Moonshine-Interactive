@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { cyberAudio } from '../utils/audioEngine';
 import projectEsperanceScreensImg from '../assets/project-esperance-screens.jpg';
 
-export default function Navbar({ currentView, setCurrentView, audioEnabled, setAudioEnabled, devEnabled, setDevEnabled }) {
+export default function Navbar({ currentView, setCurrentView, audioEnabled, setAudioEnabled }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -24,9 +24,6 @@ export default function Navbar({ currentView, setCurrentView, audioEnabled, setA
     { id: 'contact', label: 'CONTACT', sub: 'How to reach MoonShine Interactive.' },
   ];
 
-  if (devEnabled) {
-    navItems.push({ id: 'dev', label: 'DEV // PROTOTYPE HUB', sub: 'Confidential character roster & experimental UI sandbox.' });
-  }
 
   const handleNav = (id) => {
     cyberAudio.playClick();
@@ -41,19 +38,6 @@ export default function Navbar({ currentView, setCurrentView, audioEnabled, setA
     if (state) cyberAudio.playClick();
   };
 
-  const toggleDev = () => {
-    cyberAudio.playClick();
-    const newState = !devEnabled;
-    setDevEnabled(newState);
-    if (newState) {
-      setCurrentView('dev');
-      window.location.hash = 'dev';
-      setMenuOpen(false);
-    } else if (currentView === 'dev') {
-      setCurrentView('games');
-      window.location.hash = 'games';
-    }
-  };
 
   return (
     <>
@@ -165,16 +149,6 @@ export default function Navbar({ currentView, setCurrentView, audioEnabled, setA
             
             {/* Top Right Controls: Dev & Audio On/Off inside option drawer + Close X Button */}
             <div className="flex items-center flex-wrap gap-2 sm:gap-3 xl:gap-5 self-end sm:self-auto">
-              <button 
-                onClick={toggleDev}
-                onMouseEnter={() => cyberAudio.playHover()}
-                className={`flex items-center gap-2 xl:gap-3 px-3 py-2 xl:px-5 xl:py-3 border transition-all font-label-md text-xs xl:text-base shadow-lg cursor-pointer ${
-                  devEnabled ? 'bg-signal/20 border-signal text-white font-bold glow-signal' : 'bg-black border-white/20 hover:border-signal/70 text-steel'
-                }`}
-              >
-                <span className={`w-2 h-2 xl:w-3 xl:h-3 rounded-full inline-block ${devEnabled ? 'bg-signal animate-ping' : 'bg-steel/50'}`}></span>
-                <span>DEV: {devEnabled ? 'ON' : 'OFF'}</span>
-              </button>
 
               <button 
                 onClick={toggleAudio}
